@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@alias WeaponResourceFlags
 ---| 1 WRF_REQUEST_BASE_ANIMS
 ---| 2 WRF_REQUEST_COVER_ANIMS
@@ -17,10 +28,17 @@
 
 ---Load a weapon asset. When called from a thread, it will yield until it has loaded.
 ---@param weaponType string | number
+<<<<<<< HEAD
 ---@param timeout number? Number of ticks to wait for the asset to load. Default is 500.
 ---@param weaponResourceFlags WeaponResourceFlags? Default is 31.
 ---@param extraWeaponComponentFlags ExtraWeaponComponentFlags? Default is 0.
 ---@return string | number? weaponType
+=======
+---@param timeout number? Approximate milliseconds to wait for the asset to load. Default is 10000.
+---@param weaponResourceFlags WeaponResourceFlags? Default is 31.
+---@param extraWeaponComponentFlags ExtraWeaponComponentFlags? Default is 0.
+---@return string | number weaponType
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 function lib.requestWeaponAsset(weaponType, timeout, weaponResourceFlags, extraWeaponComponentFlags)
     if HasWeaponAssetLoaded(weaponType) then return weaponType end
 
@@ -38,6 +56,7 @@ function lib.requestWeaponAsset(weaponType, timeout, weaponResourceFlags, extraW
         error(("expected extraWeaponComponentFlags to have type 'number' (received %s)"):format(type(extraWeaponComponentFlags)))
     end
 
+<<<<<<< HEAD
     RequestWeaponAsset(weaponType, weaponResourceFlags or 31, extraWeaponComponentFlags or 0)
 
     if not coroutine.isyieldable() then return weaponType end
@@ -45,6 +64,9 @@ function lib.requestWeaponAsset(weaponType, timeout, weaponResourceFlags, extraW
     return lib.waitFor(function()
         if HasWeaponAssetLoaded(weaponType) then return weaponType end
     end, ("failed to load weaponType '%s'"):format(weaponType), timeout or 500)
+=======
+    return lib.streamingRequest(RequestWeaponAsset, HasWeaponAssetLoaded, 'weaponHash', weaponType, timeout, weaponResourceFlags or 31, extraWeaponComponentFlags or 0)
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 end
 
 return lib.requestWeaponAsset

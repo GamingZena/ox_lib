@@ -1,13 +1,28 @@
 -- DO NOT USE! Old syntax for addCommand (prior to v3.0)
 ---@todo convert input and call standard function?
 
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local commands = {}
 
 SetTimeout(1000, function()
     TriggerClientEvent('chat:addSuggestions', -1, commands)
 end)
 
+<<<<<<< HEAD
 AddEventHandler('playerJoining', function(source)
+=======
+AddEventHandler('playerJoining', function()
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     TriggerClientEvent('chat:addSuggestions', source, commands)
 end)
 

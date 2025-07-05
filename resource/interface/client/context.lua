@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local contextMenus = {}
 local openContextMenu = nil
 
@@ -13,6 +24,10 @@ local openContextMenu = nil
 ---@field description? string
 ---@field metadata? string | { [string]: any } | string[]
 ---@field disabled? boolean
+<<<<<<< HEAD
+=======
+---@field readOnly? boolean
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@field event? string
 ---@field serverEvent? string
 ---@field args? any

@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@class RadialItem
 ---@field icon string | {[1]: IconProp, [2]: string};
 ---@field label string
@@ -5,6 +16,11 @@
 ---@field onSelect? fun(currentMenu: string | nil, itemIndex: number) | string
 ---@field [string] any
 ---@field keepOpen? boolean
+<<<<<<< HEAD
+=======
+---@field iconWidth? number
+---@field iconHeight? number
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 ---@class RadialMenuItem: RadialItem
 ---@field id string
@@ -191,7 +207,10 @@ function lib.clearRadialItems()
     if isOpen then
         refreshRadial()
     end
+<<<<<<< HEAD
     
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 end
 
 RegisterNUICallback('radialClick', function(index, cb)
@@ -297,7 +316,11 @@ end
 
 lib.addKeybind({
     name = 'ox_lib-radial',
+<<<<<<< HEAD
     description = 'Open radial menu',
+=======
+    description = locale('open_radial_menu'),
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     defaultKey = 'z',
     onPressed = function()
         if isDisabled then return end

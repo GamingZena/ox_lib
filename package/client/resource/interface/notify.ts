@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { Sx } from '@mantine/core';
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+=======
+import type { Sx } from '@mantine/core';
+import type { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 type NotificationPosition =
   | 'top'
@@ -18,6 +23,10 @@ interface NotifyProps {
   title?: string;
   description?: string;
   duration?: number;
+<<<<<<< HEAD
+=======
+  showDuration?: boolean;
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   position?: NotificationPosition;
   type?: NotificationType;
   style?: Sx;
@@ -25,6 +34,10 @@ interface NotifyProps {
   iconColor?: string;
   iconAnimation?: IconAnimation;
   alignIcon?: 'top' | 'center';
+<<<<<<< HEAD
+=======
+  sound?: { bank?: string; set: string; name: string };  
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 }
 
 export const notify = (data: NotifyProps): void => exports.ox_lib.notify(data);

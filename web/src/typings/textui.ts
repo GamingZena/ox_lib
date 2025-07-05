@@ -12,5 +12,8 @@ export interface TextUiProps {
   iconAnimation?: IconAnimation;
   style?: React.CSSProperties;
   alignIcon?: 'top' | 'center';
+<<<<<<< HEAD
   keybind: string;
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 }

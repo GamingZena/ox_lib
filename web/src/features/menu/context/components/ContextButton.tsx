@@ -21,13 +21,18 @@ const useStyles = createStyles((theme, params: { disabled?: boolean; readOnly?: 
   },
   label: {
     width: '100%',
+<<<<<<< HEAD
     color: params.disabled ? 'lightgray' : 'white',
+=======
+    color: params.disabled ? theme.colors.dark[3] : theme.colors.dark[0],
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     whiteSpace: 'pre-wrap',
   },
   button: {
     height: 'fit-content',
     width: '100%',
     padding: 10,
+<<<<<<< HEAD
     background: 'radial-gradient(ellipse, rgba(122, 122, 122, 0.9) 0%, rgba(148, 148, 148, 0.5) 85%)',
     border: '1px solid lightgray',
     borderRadius: '5px',
@@ -36,26 +41,38 @@ const useStyles = createStyles((theme, params: { disabled?: boolean; readOnly?: 
       // backgroundColor: params.readOnly ? theme.colors.dark[6] : undefined,
       backgroundColor: 'black',
       border: '1px solid rgb(56, 162, 229)',
+=======
+    '&:hover': {
+      backgroundColor: params.readOnly ? theme.colors.dark[6] : undefined,
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
       cursor: params.readOnly ? 'unset' : 'pointer',
     },
     '&:active': {
       transform: params.readOnly ? 'unset' : undefined,
     },
   },
+<<<<<<< HEAD
   disabled: {
     backgroundColor: 'black',
     background: 'radial-gradient(ellipse, rgba(122, 122, 122, 1) 0%, rgba(65, 65, 65, 1) 85%)',
     border: '1px solid rgb(56, 162, 229)',
   },
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   iconImage: {
     maxWidth: '25px',
   },
   description: {
+<<<<<<< HEAD
     color: 'lightgray',
+=======
+    color: params.disabled ? theme.colors.dark[3] : theme.colors.dark[2],
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     fontSize: 12,
   },
   dropdown: {
     padding: 10,
+<<<<<<< HEAD
     color: 'white',
     fontSize: 14,
     maxWidth: 256,
@@ -63,6 +80,13 @@ const useStyles = createStyles((theme, params: { disabled?: boolean; readOnly?: 
     backgroundColor: 'black',
     background: 'radial-gradient(ellipse, rgba(122, 122, 122, 1) 0%, rgba(65, 65, 65, 1) 85%)',
     border: '1px solid rgb(56, 162, 229)',
+=======
+    color: theme.colors.dark[0],
+    fontSize: 14,
+    maxWidth: 256,
+    width: 'fit-content',
+    border: 'none',
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   },
   buttonStack: {
     gap: 4,
@@ -84,11 +108,16 @@ const useStyles = createStyles((theme, params: { disabled?: boolean; readOnly?: 
   buttonArrowContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< HEAD
     width: 40,
     height: 40,
     color: '#38a2e5',
     textShadow: '0px 0px 10px rgba(56,162,229,0.6)',
     fontSize: 26,
+=======
+    width: 25,
+    height: 25,
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   },
 }));
 
@@ -108,11 +137,15 @@ const ContextButton: React.FC<{
       >
         <HoverCard.Target>
           <Button
+<<<<<<< HEAD
             classNames={{
               inner: classes.inner,
               label: classes.label,
               root: classes.button,
             }}
+=======
+            classNames={{ inner: classes.inner, label: classes.label, root: classes.button }}
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
             onClick={() =>
               !button.disabled && !button.readOnly
                 ? button.menu
@@ -122,6 +155,7 @@ const ContextButton: React.FC<{
             }
             variant="default"
             disabled={button.disabled}
+<<<<<<< HEAD
             style={{
               background: button.disabled
                 ? 'radial-gradient(ellipse, rgba(122, 122, 122, 1) 0%, rgba(65, 65, 65, 1) 85%)'
@@ -129,6 +163,8 @@ const ContextButton: React.FC<{
               border: button.disabled ? '1px solid #f72f49' : undefined,
               backgroundColor: button.disabled ? 'black' : undefined,
             }}
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
           >
             <Group position="apart" w="100%" noWrap>
               <Stack className={classes.buttonStack}>

@@ -34,7 +34,11 @@ const useStyles = createStyles((theme, params: { position: 'middle' | 'bottom'; 
   },
   value: {
     textAlign: 'center',
+<<<<<<< HEAD
     fontFamily: 'roboto-mono',
+=======
+    fontFamily: 'Roboto Mono',
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     textShadow: theme.shadows.sm,
     color: theme.colors.gray[3],
   },

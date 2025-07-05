@@ -21,10 +21,28 @@ const Indicator: React.FC<Props> = ({ angle, offset, multiplier, handleComplete,
       }),
     1
   );
+<<<<<<< HEAD
 
   const keyHandler = useCallback(
     (e: KeyboardEvent) => {
       setKeyPressed(e.key.toLowerCase());
+=======
+  const keyHandler = useCallback(
+    (e: KeyboardEvent) => {
+      const capitalHetaCode = 880;
+      const isNonLatin = e.key.charCodeAt(0) >= capitalHetaCode;
+      var convKey = e.key.toLowerCase()
+      if (isNonLatin) {
+        if (e.code.indexOf('Key') === 0 && e.code.length === 4) { // i.e. 'KeyW'
+          convKey = e.code.charAt(3);
+        }
+
+        if (e.code.indexOf('Digit') === 0 && e.code.length === 6) { // i.e. 'Digit7'
+          convKey = e.code.charAt(5);
+        }
+      }
+      setKeyPressed(convKey.toLowerCase());
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     },
     [skillCheck]
   );

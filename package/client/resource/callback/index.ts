@@ -1,10 +1,26 @@
 import { cache } from '../cache';
 
+<<<<<<< HEAD
 const activeEvents: Record<string, (...args: any[]) => void> = {};
 
 onNet(`__ox_cb_${cache.resource}`, (key: string, ...args: any) => {
   const resolve = activeEvents[key];
   return resolve && resolve(...args);
+=======
+const pendingCallbacks: Record<string, (...args: any[]) => void> = {};
+const callbackTimeout = GetConvarInt('ox:callbackTimeout', 300000);
+
+onNet(`__ox_cb_${cache.resource}`, (key: string, ...args: any) => {
+  if (!source) return;
+
+  const resolve = pendingCallbacks[key];
+
+  if (!resolve) return;
+
+  delete pendingCallbacks[key];
+
+  resolve(...args);
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 });
 
 const eventTimers: Record<string, number> = {};
@@ -32,16 +48,37 @@ export function triggerServerCallback<T = unknown>(
 
   do {
     key = `${eventName}:${Math.floor(Math.random() * (100000 + 1))}`;
+<<<<<<< HEAD
   } while (activeEvents[key]);
 
   emitNet(`__ox_cb_${eventName}`, cache.resource, key, ...args);
 
   return new Promise<T>((resolve) => {
     activeEvents[key] = resolve;
+=======
+  } while (pendingCallbacks[key]);
+
+  emitNet(`ox_lib:validateCallback`, eventName, cache.resource, key);
+  emitNet(`__ox_cb_${eventName}`, cache.resource, key, ...args);
+
+  return new Promise<T>((resolve, reject) => {
+    pendingCallbacks[key] = (args) => {
+      if (args[0] === 'cb_invalid') reject(`callback '${eventName} does not exist`);
+
+      resolve(args);
+    };
+
+    setTimeout(reject, callbackTimeout, `callback event '${key}' timed out`);
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   });
 }
 
 export function onServerCallback(eventName: string, cb: (...args: any[]) => any) {
+<<<<<<< HEAD
+=======
+  exports.ox_lib.setValidCallback(eventName, true)
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   onNet(`__ox_cb_${eventName}`, async (resource: string, key: string, ...args: any[]) => {
     let response: any;
 

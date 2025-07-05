@@ -43,7 +43,12 @@ cache = {
 }
 
 if not LoadResourceFile(lib.name, 'web/build/index.html') then
+<<<<<<< HEAD
     local err = '^1Unable to load UI. Build ox_lib or download the latest release.\n	^3https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip^0'
+=======
+    local err =
+    '^1Unable to load UI. Build ox_lib or download the latest release.\n	^3https://github.com/overextended/ox_lib/releases/latest/download/ox_lib.zip^0'
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     function lib.hasLoaded() return err end
 
     error(err)
@@ -51,4 +56,8 @@ end
 
 function lib.hasLoaded() return true end
 
+<<<<<<< HEAD
 lib.locale()
+=======
+require = lib.require
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

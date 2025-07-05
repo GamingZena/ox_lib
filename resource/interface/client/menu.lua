@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@type { [string]: MenuProps }
 local registeredMenus = {}
 ---@type MenuProps | nil
@@ -49,6 +60,14 @@ function lib.showMenu(id, startIndex)
     if not menu then
         error(('No menu with id %s was found'):format(id))
     end
+<<<<<<< HEAD
+=======
+
+    if table.type(menu.options) == 'empty' then
+        error(('Can\'t open empty menu with id %s'):format(id))
+    end
+    
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     if not openMenu then
         local control = cache.game == 'fivem' and 140 or 0xE30CD707
 

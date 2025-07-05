@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 .prettierrc
+=======
+.prettierrc
+*.ts
+!*.d.ts
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

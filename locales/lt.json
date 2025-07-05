@@ -1,9 +1,14 @@
 {
   "language": "Lietuvių",
+<<<<<<< HEAD
+=======
+  "settings": "Nustatymai",
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   "ui": {
     "cancel": "Atšaukti",
     "close": "Uždaryti",
     "confirm": "Patvirtinti",
+<<<<<<< HEAD
     "more": "Daugiau..."
   },
   "txadmin_announcement": "Server announcement by %s",
@@ -11,4 +16,31 @@
   "txadmin_warn": "You have been warned by %s",
   "txadmin_warn_content": "%s  \nAction ID: %s",
   "txadmin_scheduledrestart": "Scheduled Restart"
+=======
+    "more": "Daugiau...",
+    "settings": {
+      "locale": "Pakeisti kalbą",
+      "locale_description": "Dabartinė: ${language} (%s)",
+      "notification_audio": "Pranešimo garsas",
+      "notification_position": "Pranešimo pozicija"
+    },
+    "position": {
+      "bottom": "Apačioje",
+      "bottom-left": "Apačioje-kairėje",
+      "bottom-right": "Apačioje-dešinėje",
+      "center-left": "Centre-kairėje",
+      "center-right": "Centre-dešinėje",
+      "top": "Viršuje",
+      "top-left": "Viršuje-kairėje",
+      "top-right": "Viršuje-dešinėje"
+    }
+  },
+  "open_radial_menu": "Atidaryti radialinį meniu",
+  "cancel_progress": "Atšaukti dabartinę eigos juostą",
+  "txadmin_announcement": "Serverio pranešimas nuo %s",
+  "txadmin_dm": "Tiesioginis pranešimas nuo %s",
+  "txadmin_warn": "Buvote įspėtas nuo %s",
+  "txadmin_warn_content": "%s  \nVeiksmo ID: %s",
+  "txadmin_scheduledrestart": "Suplanuotas paleidimas iš naujo"
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 }

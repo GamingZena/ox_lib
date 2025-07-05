@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -128,3 +129,17 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+=======
+.idea
+created_zones.lua
+
+node_modules
+pnpm-debug.log*
+
+/package/**/*.js
+/package/**/*.js.map
+/package/**/*.d.ts
+
+/web/node_modules
+/web/build
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

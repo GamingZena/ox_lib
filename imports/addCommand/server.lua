@@ -1,7 +1,22 @@
+<<<<<<< HEAD
 ---@class OxCommandParams
 ---@field name string
 ---@field help? string
 ---@field type? 'number' | 'playerId' | 'string'
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+---@class OxCommandParams
+---@field name string
+---@field help? string
+---@field type? 'number' | 'playerId' | 'string' | 'longString'
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@field optional? boolean
 
 ---@class OxCommandProperties
@@ -18,7 +33,11 @@ SetTimeout(1000, function()
     TriggerClientEvent('chat:addSuggestions', -1, registeredCommands)
 end)
 
+<<<<<<< HEAD
 AddEventHandler('playerJoining', function(source)
+=======
+AddEventHandler('playerJoining', function()
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     TriggerClientEvent('chat:addSuggestions', source, registeredCommands)
 end)
 
@@ -30,7 +49,12 @@ end)
 local function parseArguments(source, args, raw, params)
     if not params then return args end
 
+<<<<<<< HEAD
     for i = 1, #params do
+=======
+    local paramsNum = #params
+    for i = 1, paramsNum do
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
         local arg, param = args[i], params[i]
         local value
 
@@ -41,9 +65,22 @@ local function parseArguments(source, args, raw, params)
         elseif param.type == 'playerId' then
             value = arg == 'me' and source or tonumber(arg)
 
+<<<<<<< HEAD
             if not value or not GetPlayerGuid(value--[[@as string]]) then
                 value = false
             end
+=======
+            if not value or not DoesPlayerExist(value--[[@as string]]) then
+                value = false
+            end
+        elseif param.type == 'longString' and i == paramsNum then
+            if arg then
+                local start = raw:find(arg, 1, true)
+                value = start and raw:sub(start)
+            else
+                value = nil
+            end
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
         else
             value = arg
         end
@@ -102,7 +139,15 @@ function lib.addCommand(commandName, properties, cb, ...)
 
         if not args then return end
 
+<<<<<<< HEAD
         cb(source, args, raw)
+=======
+        local success, resp = pcall(cb, source, args, raw)
+
+        if not success then
+            Citizen.Trace(("^1command '%s' failed to execute!\n%s"):format(string.strsplit(' ', raw) or raw, resp))
+        end
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     end
 
     for i = 1, numCommands do
@@ -127,6 +172,10 @@ function lib.addCommand(commandName, properties, cb, ...)
         end
 
         if properties then
+<<<<<<< HEAD
+=======
+            ---@diagnostic disable-next-line: inject-field
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
             properties.name = ('/%s'):format(commandName)
             properties.restricted = nil
             registeredCommands[totalCommands] = properties

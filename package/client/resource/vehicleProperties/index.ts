@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 interface VehicleProperties {
   model: string;
   plate: string;
@@ -88,9 +89,16 @@ interface VehicleProperties {
   bulletProofTyres: boolean;
   driftTyres: boolean;
 }
+=======
+import type { VehicleProperties } from '../../'
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 export const getVehicleProperties = (vehicle: number): VehicleProperties =>
   exports.ox_lib.getVehicleProperties(vehicle);
 
 export const setVehicleProperties = (vehicle: number, props: Partial<VehicleProperties>, fixVehicle?: boolean): boolean =>
+<<<<<<< HEAD
   exports.ox_lib.setVehicleProperties(vehicle, props);
+=======
+  exports.ox_lib.setVehicleProperties(vehicle, props, fixVehicle);
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

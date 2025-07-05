@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+=======
+import type { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 type Icon = IconName | [IconName, IconPrefix];
 
@@ -63,6 +67,11 @@ interface SelectProps extends BaseInput {
   disabled?: boolean;
   default?: string | string[];
   clearable?: boolean;
+<<<<<<< HEAD
+=======
+  searchable?: boolean;
+  maxSelectedValues?: number;
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 }
 
 interface SliderProps extends BaseInput {
@@ -147,7 +156,12 @@ type RowInput =
   | ColorProps
   | DateProps
   | DateRangeProps
+<<<<<<< HEAD
   | TimeProps;
+=======
+  | TimeProps
+  | TextAreaProps;
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 type inputDialog = (
   heading: string,
@@ -156,6 +170,10 @@ type inputDialog = (
     allowCancel?: boolean;
   }
 ) => Promise<Array<string | number | boolean> | undefined>;
+<<<<<<< HEAD
 export const inputDialog: inputDialog = async (heading, rows) => await exports.ox_lib.inputDialog(heading, rows);
+=======
+export const inputDialog: inputDialog = async (heading, rows, options) => await exports.ox_lib.inputDialog(heading, rows, options);
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 export const closeInputDialog = () => exports.ox_lib.closeInputDialog();

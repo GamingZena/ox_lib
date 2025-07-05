@@ -4,6 +4,7 @@
     "cancel": "Zrušit",
     "close": "Zavřít",
     "confirm": "Potvrdit",
+<<<<<<< HEAD
     "more": "Více..."
   },
   "txadmin_announcement": "Server oznámení od %s",
@@ -12,3 +13,31 @@
   "txadmin_warn_content": "%s  \nID Akce: %s",
   "txadmin_scheduledrestart": "Plánovaný restart"
 }
+=======
+    "more": "Více...",
+    "settings": {
+      "locale": "Změnit jazyk",
+      "locale_description": "Aktuální jazyk: ${language} (%s)",
+      "notification_audio": "Zvuk notifikací",
+      "notification_position": "Pozice notifikací"
+    },
+    "position": {
+      "bottom": "Dole",
+      "bottom-left": "Vlevo dole",
+      "bottom-right": "Vpravo dole",
+      "center-left": "Vlevo uprostřed",
+      "center-right": "Vpravo uprostřed",
+      "top": "Nahoře",
+      "top-left": "Vlevo nahoře",
+      "top-right": "Vpravo nahoře"
+    }
+  },
+  "open_radial_menu": "Otevřít kruhové menu",
+  "cancel_progress": "Zrušit aktuální progress bar",
+  "txadmin_announcement": "Serverové oznámení od %s",
+  "txadmin_dm": "Soukromá zpráva od %s",
+  "txadmin_warn": "Byl jsi varován od %s",
+  "txadmin_warn_content": "%s  \nID akce: %s",
+  "txadmin_scheduledrestart": "Plánovaný restart"
+}
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

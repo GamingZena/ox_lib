@@ -13,4 +13,9 @@ indent_style = space
 max_line_length = 120
 
 [*.lua]
+<<<<<<< HEAD
 indent_size = 4
+=======
+indent_size = 4
+max_line_length = 160
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9

@@ -9,6 +9,15 @@
  * @return returnData - A promise for the data sent back by the NuiCallbacks CB argument
  */
 
+<<<<<<< HEAD
+=======
+const fetch = window.fetch;
+// @ts-expect-error
+window.fetch = () => {};
+// @ts-expect-error
+window.XMLHttpRequest = window.fetch;
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 export async function fetchNui<T = any>(eventName: string, data?: any): Promise<T> {
   const options = {
     method: 'post',
@@ -23,7 +32,10 @@ export async function fetchNui<T = any>(eventName: string, data?: any): Promise<
     : 'nui-frame-app';
 
   const resp = await fetch(`https://${resourceName}/${eventName}`, options);
+<<<<<<< HEAD
 
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   const respFormatted = await resp.json();
 
   return respFormatted;

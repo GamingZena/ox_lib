@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@class oxmath : mathlib
 lib.math = math
 
@@ -32,7 +43,11 @@ function math.toscalars(input, min, max, round)
     local i = 0
 
     for s in string.gmatch(input:gsub('[%w]+%w?%(', ''), '(-?[%w.%w]+)') do
+<<<<<<< HEAD
         local n = parseNumber(s, min, max, round)
+=======
+        local n = parseNumber(s, min, max, round and (round == true or i < round))
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
         i += 1
         arr[i] = n
@@ -45,7 +60,11 @@ end
 ---@param input string | table
 ---@param min? number
 ---@param max? number
+<<<<<<< HEAD
 ---@param round? boolean
+=======
+---@param round? boolean | number If round is a number, only round n values.
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 ---@return number | vector2 | vector3 | vector4
 function math.tovector(input, min, max, round)
     local inputType = type(input)
@@ -89,11 +108,22 @@ function math.normaltorotation(input)
     error(('cannot convert type %s to a rotation vector'):format(inputType), 2)
 end
 
+<<<<<<< HEAD
 ---Tries to convert its argument to a vector.
 ---@param input string | table
 ---@return number | vector2 | vector3 | vector4
 function math.torgba(input)
     return math.tovector(input, 0, 255, true)
+=======
+---Tries to convert its argument to a vector4.
+---@param input string | table
+---@return vector4
+function math.torgba(input)
+    local res = math.tovector(input, 0, 255, 3)
+    assert(type(res) == 'vector4', 'cannot convert input to rgba')
+    parseNumber(res.a, 0, 1)
+    return res
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 end
 
 ---Takes a hexidecimal string and returns three integers.
@@ -120,8 +150,13 @@ end
 ---@param seperator? string
 ---@return string
 function math.groupdigits(number, seperator) -- credit http://richard.warburton.it
+<<<<<<< HEAD
     local left,num,right = string.match(number,'^([^%d]*%d)(%d*)(.-)$')
     return left..(num:reverse():gsub('(%d%d%d)','%1' .. (seperator or ',')):reverse())..right
+=======
+    local left, num, right = string.match(number, '^([^%d]*%d)(%d*)(.-)$')
+    return left .. (num:reverse():gsub('(%d%d%d)', '%1' .. (seperator or ',')):reverse()) .. right
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 end
 
 ---Clamp a number between 2 other numbers
@@ -129,9 +164,97 @@ end
 ---@param lower number
 ---@param upper number
 ---@return number
+<<<<<<< HEAD
 function math.clamp(val, lower, upper) -- credit https://love2d.org/forums/viewtopic.php?t=1856
+=======
+function math.clamp(val, lower, upper)                    -- credit https://love2d.org/forums/viewtopic.php?t=1856
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     if lower > upper then lower, upper = upper, lower end -- swap if boundaries supplied the wrong way
     return math.max(lower, math.min(upper, val))
 end
 
+<<<<<<< HEAD
+=======
+---Calculates an intermediate value between `start` and `finish` based on the interpolation `factor`.
+---@generic T : number | vector2 | vector3 | vector4
+---@param start T
+---@param finish T
+---@param factor integer The interpolation factor between 0 and 1.
+---@return T
+function math.interp(start, finish, factor)
+    return start + (finish - start) * factor
+end
+
+local function interpolateTable(start, finish, factor)
+    local interp = math.interp
+    local result = {}
+
+    for k, v in pairs(start) do
+        result[k] = interp(v, finish[k], factor)
+    end
+
+    return result
+end
+
+---Linearly interpolates between two values over a specified duration, returning an iterator function that will run once per game-frame.
+---@generic T : number | table | vector2 | vector3 | vector4
+---@param start T -- The starting value of the interpolation.
+---@param finish T -- The ending value of the interpolation.
+---@param duration number -- The duration over which to interpolate over in milliseconds.
+---@return fun(): T, number
+function math.lerp(start, finish, duration)
+    local startTime = GetGameTimer()
+    local typeStart = type(start)
+    local typeFinish = type(finish)
+
+    if typeStart ~= 'number' and typeStart ~= 'vector2' and typeStart ~= 'vector3' and typeStart ~= 'vector4' and typeStart ~= 'table' then
+        error(("expected argument 1 to have type '%s' (received %s)"):format('number | table | vector2 | vector3 | vector4', typeStart))
+    end
+
+    assert(typeFinish == typeStart, ("expected argument 2 to have type '%s' (received %s)"):format(typeStart, typeFinish))
+
+    local interpFn = typeStart == 'table' and interpolateTable or math.interp
+    local step
+
+    return function()
+        if not step then
+            step = 0
+            return start, step
+        end
+
+        if step == 1 then return end
+
+        Wait(0)
+        step = math.min((GetGameTimer() - startTime) / duration, 1)
+
+        if step < 1 then
+            return interpFn(start, finish, step), step
+        end
+
+        return finish, step
+    end
+end
+
+---Rounds a number to a whole number or to the specified number of decimal places.
+---@param value number | string
+---@param places? number | string
+---@return number
+function math.round(value, places)
+    if type(value) == 'string' then value = tonumber(value) end
+    if type(value) ~= 'number' then error('Value must be a number') end
+
+    if places then
+        if type(places) == 'string' then places = tonumber(places) end
+        if type(places) ~= 'number' then error('Places must be a number') end
+
+        if places > 0 then
+            local mult = 10 ^ (places or 0)
+            return math.floor(value * mult + 0.5) / mult
+        end
+    end
+
+    return math.floor(value + 0.5)
+end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 return lib.math

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+=======
+import type { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 type IconAnimation = 'spin' | 'spinPulse' | 'spinReverse' | 'pulse' | 'beat' | 'fade' | 'beatFade' | 'bounce' | 'shake';
 

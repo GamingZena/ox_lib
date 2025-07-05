@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local service = GetConvar('ox:logger', 'datadog')
 local buffer
 local bufferSize = 0
@@ -84,6 +95,56 @@ local function formatTags(source, tags)
     return tags
 end
 
+<<<<<<< HEAD
+=======
+if service == 'fivemanage' then
+    local key = GetConvar('fivemanage:key', '')
+
+    if key ~= '' then
+        local endpoint = 'https://api.fivemanage.com/api/logs/batch'
+
+        local headers = {
+            ['Content-Type'] = 'application/json',
+            ['Authorization'] = key,
+            ['User-Agent'] = 'ox_lib'
+        }
+
+        function lib.logger(source, event, message, ...)
+            if not buffer then
+                buffer = {}
+
+                SetTimeout(500, function()
+                    PerformHttpRequest(endpoint, function(status, _, _, response)
+                        if status ~= 200 then 
+                            if type(response) == 'string' then
+                                response = json.decode(response) or response
+                                badResponse(endpoint, status, response)
+                            end
+                        end
+                    end, 'POST', json.encode(buffer), headers)
+
+                    buffer = nil
+                    bufferSize = 0
+                end)
+            end
+
+            bufferSize += 1
+            buffer[bufferSize] = {
+                level = "info",
+                message = message,
+                resource = cache.resource,
+                metadata = {
+                    hostname = hostname,
+                    service = event,
+                    source = source,
+                    tags = formatTags(source, ... and string.strjoin(',', string.tostringall(...)) or nil),
+                }
+            }
+        end
+    end
+end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 if service == 'datadog' then
     local key = GetConvar('datadog:key', ''):gsub("[\'\"]", '')
 
@@ -131,6 +192,10 @@ if service == 'loki' then
     local lokiUser = GetConvar('loki:user', '')
     local lokiPassword = GetConvar('loki:password', GetConvar('loki:key', ''))
     local lokiEndpoint = GetConvar('loki:endpoint', '')
+<<<<<<< HEAD
+=======
+    local lokiTenant = GetConvar('loki:tenant', '')
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     local startingPattern = '^http[s]?://'
     local headers = {
         ['Content-Type'] = 'application/json'
@@ -140,6 +205,13 @@ if service == 'loki' then
         headers['Authorization'] = getAuthorizationHeader(lokiUser, lokiPassword)
     end
 
+<<<<<<< HEAD
+=======
+    if lokiTenant ~= '' then
+        headers['X-Scope-OrgID'] = lokiTenant
+    end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
     if not lokiEndpoint:find(startingPattern) then
         lokiEndpoint = 'https://' .. lokiEndpoint
     end

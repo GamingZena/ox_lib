@@ -1,4 +1,5 @@
 --[[
+<<<<<<< HEAD
 	-- function
 local poly = lib.zones.poly({
 	name = poly,
@@ -37,6 +38,19 @@ exports.ox_target:addPolyZone({
 })
 ]]
 
+=======
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+local function formatNumber(num)
+	return tostring(num):gsub(",", ".")
+end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local parse = {
 	poly = function(data)
 		local points = {}
@@ -82,18 +96,46 @@ local parse = {
 			pattern = {
 				'local box = lib.zones.box({\n',
 				('\tname = "%s",\n'):format(data.name),
+<<<<<<< HEAD
 				('\tcoords = vec3(%s, %s, %s),\n'):format(data.xCoord, data.yCoord, data.zCoord),
 				('\tsize = vec3(%s, %s, %s),\n'):format(data.width, data.length, data.height),
 				('\trotation = %s,\n'):format(data.heading),
+=======
+				('\tcoords = vec3(%s, %s, %s),\n'):format(
+					formatNumber(data.xCoord),
+					formatNumber(data.yCoord),
+					formatNumber(data.zCoord)
+				),
+				('\tsize = vec3(%s, %s, %s),\n'):format(
+					formatNumber(data.width),
+					formatNumber(data.length),
+					formatNumber(data.height)
+				),
+				('\trotation = %s,\n'):format(formatNumber(data.heading)),
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 				'})\n',
 			}
 		elseif data.format == 'array' then
 			pattern = {
 				'{\n',
 				('\tname = "%s",\n'):format(data.name),
+<<<<<<< HEAD
 				('\tcoords = vec3(%s, %s, %s),\n'):format(data.xCoord, data.yCoord, data.zCoord),
 				('\tsize = vec3(%s, %s, %s),\n'):format(data.width, data.length, data.height),
 				('\trotation = %s,\n'):format(data.heading),
+=======
+				('\tcoords = vec3(%s, %s, %s),\n'):format(
+					formatNumber(data.xCoord),
+					formatNumber(data.yCoord),
+					formatNumber(data.zCoord)
+				),
+				('\tsize = vec3(%s, %s, %s),\n'):format(
+					formatNumber(data.width),
+					formatNumber(data.length),
+					formatNumber(data.height)
+				),
+				('\trotation = %s,\n'):format(formatNumber(data.heading)),
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 				'},\n',
 			}
 		elseif data.format == 'target' then

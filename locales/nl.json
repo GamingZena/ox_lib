@@ -1,11 +1,38 @@
 {
   "language": "Nederlands",
+<<<<<<< HEAD
+=======
+  "settings": "Instellingen",
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   "ui": {
     "cancel": "Annuleren",
     "close": "Sluiten",
     "confirm": "Bevestigen",
+<<<<<<< HEAD
     "more": "Meer..."
   },
+=======
+    "more": "Meer...",
+    "settings": {
+      "locale": "Taal wijzigen",
+      "locale_description": "Huidige taal: ${language} (%s)",
+      "notification_audio": "Meldingsgeluid",
+      "notification_position": "Meldingspositie"
+    },
+    "position": {
+      "bottom": "Onder",
+      "bottom-left": "Linksonder",
+      "bottom-right": "Rechtsonder",
+      "center-left": "Linksmidden",
+      "center-right": "Rechtsmidden",
+      "top": "Boven",
+      "top-left": "Linksboven",
+      "top-right": "Rechtsboven"
+    }
+  },
+  "open_radial_menu": "Radiaal menu openen",
+  "cancel_progress": "Huidige voortgangsbalk annuleren",
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   "txadmin_announcement": "Server mededeling door %s",
   "txadmin_dm": "Bericht van %s",
   "txadmin_warn": "Je hebt een waarschuwing gekregen van %s",

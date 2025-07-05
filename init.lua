@@ -1,10 +1,23 @@
 ---@meta
+<<<<<<< HEAD
 ---ox_lib <https://github.com/overextended/ox_lib>
 ---Copyright (C) 2021 Linden <https://github.com/thelindat>
 ---LGPL-3.0-or-later <https://www.gnu.org/licenses/lgpl-3.0.en.html>
 
 if not _VERSION:find('5.4') then
     error('^1Lua 5.4 must be enabled in the resource manifest!^0', 2)
+=======
+--[[
+    https://github.com/overextended/ox_lib
+
+    This file is licensed under LGPL-3.0 or higher <https://www.gnu.org/licenses/lgpl-3.0.en.html>
+
+    Copyright © 2025 Linden <https://github.com/thelindat>
+]]
+
+if not _VERSION:find('5.4') then
+    error('Lua 5.4 must be enabled in the resource manifest!', 2)
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 end
 
 local resourceName = GetCurrentResourceName()
@@ -13,6 +26,13 @@ local ox_lib = 'ox_lib'
 -- Some people have decided to load this file as part of ox_lib's fxmanifest?
 if resourceName == ox_lib then return end
 
+<<<<<<< HEAD
+=======
+if lib and lib.name == ox_lib then
+    error(("Cannot load ox_lib more than once.\n\tRemove any duplicate entries from '@%s/fxmanifest.lua'"):format(resourceName))
+end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local export = exports[ox_lib]
 
 if GetResourceState(ox_lib) ~= 'started' then
@@ -48,7 +68,19 @@ local function loadModule(self, module)
         local fn, err = load(chunk, ('@@ox_lib/imports/%s/%s.lua'):format(module, context))
 
         if not fn or err then
+<<<<<<< HEAD
             return error(('\n^1Error importing module (%s): %s^0'):format(dir, err), 3)
+=======
+            if shared then
+                lib.print.warn(("An error occurred when importing '@ox_lib/imports/%s'.\nThis is likely caused by improperly updating ox_lib.\n%s'")
+                    :format(module, err))
+                fn, err = load(shared, ('@@ox_lib/imports/%s/shared.lua'):format(module))
+            end
+
+            if not fn or err then
+                return error(('\n^1Error importing module (%s): %s^0'):format(dir, err), 3)
+            end
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
         end
 
         local result = fn()
@@ -87,19 +119,25 @@ end
 local lib = setmetatable({
     name = ox_lib,
     context = context,
+<<<<<<< HEAD
     onCache = function(key, cb)
         AddEventHandler(('ox_lib:cache:%s'):format(key), cb)
     end
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 }, {
     __index = call,
     __call = call,
 })
 
+<<<<<<< HEAD
 _ENV.lib = lib
 
 -- Override standard Lua require with our own.
 require = lib.require
 
+=======
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 local intervals = {}
 --- Dream of a world where this PR gets accepted.
 ---@param callback function | number
@@ -131,8 +169,15 @@ function SetInterval(callback, interval, ...)
         repeat
             interval = intervals[id]
             Wait(interval)
+<<<<<<< HEAD
             callback(table.unpack(args))
         until interval < 0
+=======
+
+            if interval < 0 then break end
+            callback(table.unpack(args))
+        until false
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
         intervals[id] = nil
     end)
 
@@ -169,19 +214,46 @@ end
 ---Caches the result of a function, optionally clearing it after timeout ms.
 function cache(key, func, timeout) end
 
+<<<<<<< HEAD
 local cache = setmetatable({ game = GetGameName(), resource = resourceName }, {
     __index = context == 'client' and function(self, key)
         AddEventHandler(('ox_lib:cache:%s'):format(key), function(value)
+=======
+local cacheEvents = {}
+
+local cache = setmetatable({ game = GetGameName(), resource = resourceName }, {
+    __index = function(self, key)
+        cacheEvents[key] = {}
+
+        AddEventHandler(('ox_lib:cache:%s'):format(key), function(value)
+            local oldValue = self[key]
+            local events = cacheEvents[key]
+
+            for i = 1, #events do
+                Citizen.CreateThreadNow(function()
+                    events[i](value, oldValue)
+                end)
+            end
+
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
             self[key] = value
         end)
 
         return rawset(self, key, export.cache(nil, key) or false)[key]
+<<<<<<< HEAD
     end or nil,
+=======
+    end,
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
     __call = function(self, key, func, timeout)
         local value = rawget(self, key)
 
+<<<<<<< HEAD
         if not value then
+=======
+        if value == nil then
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
             value = func()
 
             rawset(self, key, value)
@@ -193,7 +265,21 @@ local cache = setmetatable({ game = GetGameName(), resource = resourceName }, {
     end,
 })
 
+<<<<<<< HEAD
 _ENV.cache = cache
+=======
+function lib.onCache(key, cb)
+    if not cacheEvents[key] then
+        getmetatable(cache).__index(cache, key)
+    end
+
+    table.insert(cacheEvents[key], cb)
+end
+
+_ENV.lib = lib
+_ENV.cache = cache
+_ENV.require = lib.require
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 local notifyEvent = ('__ox_notify_%s'):format(cache.resource)
 

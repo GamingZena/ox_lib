@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+=======
+import type { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
 
 type MenuPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 type ChangeFunction = (selected: number, scrollIndex?: number, args?: any, checked?: boolean) => void;
@@ -27,7 +31,11 @@ interface MenuProps {
   onClose?: (keyPressed?: 'Escape' | 'Backspace') => void;
   onSelected?: ChangeFunction;
   onSideScroll?: ChangeFunction;
+<<<<<<< HEAD
   onChecked?: ChangeFunction;
+=======
+  onCheck?: ChangeFunction;
+>>>>>>> b4e3bcdad75f91eaa6d4e75063de4a281ebd36d9
   cb?: ChangeFunction;
 }
 
